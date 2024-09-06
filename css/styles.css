@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+header{
+    display: flex;
+    background-color:rgb(127, 255, 212);    
+}
+.div_header h1{
+    padding-left: 50px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(10, 45, 21);
+    margin: 40px;
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 40px;
+}
+nav ul button{
+    border-radius: 6px;
+    border: none;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    font-size: 1.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: rgb(10, 45, 21);
+    background-color: aquamarine;
+    padding: 7px;
+    cursor: pointer;
+}
+nav ul button:hover{
+    background-color: rgb(10, 45, 21);
+    color: white;
+    transform: scale(1.15);
+}
+.section_1 h2{
+    font-style: italic;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(10, 45, 21);
+    margin: 20px;
+    padding-left: 5px;
+}
+.div_productos{
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+
+}
+.clase_caja_consola{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: aquamarine;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+.consola_imagen{
+    border-radius: 10px;
+}
+.img_consola{
+    border-radius: 10px;
+}
+.clase_caja_consola h3{
+    color:rgb(10, 45, 21);
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 10px; 
+}
+.clase_caja_consola h4{
+    color:rgb(10, 45, 21);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px; 
+}
+.consola_boton{
+    align-items: center;
+    border: none;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 1.15rem;
+    color: white;
+    background-color: rgb(68, 134, 112);
+    margin: 10px;
+    padding: 7px;
+    cursor: pointer;
+
+}.consola_boton:hover{
+    transform: scale(1.05);
+}
+.section_2{
+    margin: 30px;
+    padding: 30px;
+}
+.section_2 h2{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    color: rgb(10, 45, 21);
+    margin-left: 20px;
+}
+.productos_en_compra{
+    display: flex;
+    flex-direction: column;
+
+}
+.carrito_consola{
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    align-items: center;
+}
+.carrito_consola h3{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding-left: 10px;
+}
+.carrito_consola p{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 50px;
+    margin-right: 50px;
+
+}
+.consola_quitar_boton{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    border-radius: none;
+    background-color: none;
+    cursor: pointer;
+}
+.d_none{
+    display: none;
+}
+.total_carro h3{
+    margin-left: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: oblique;
+    color: rgb(10, 45, 21);
+
+}
+
+footer{
+    display: flex;
+    background-color:aquamarine; 
+}
+.div_footer{
+    padding-left: 50px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(10, 45, 21);
+    margin: 40px;
+}

@@ -33,8 +33,6 @@ nav ul button{
     cursor: pointer;
 }
 nav ul button:hover{
-    background-color: rgb(10, 45, 21);
-    color: white;
     transform: scale(1.15);
 }
 .section_1 h2{
@@ -47,8 +45,9 @@ nav ul button:hover{
 .div_productos{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     margin: 5px;
-
 }
 .clase_caja_consola{
     display: flex;
@@ -189,4 +188,12 @@ footer{
 }
 .boton_vaciar:hover{
     transform: scale(1.15);
+}
+.boton_tosti title{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.activo{
+    background-color: rgb(10, 45, 21);
+    color: white;
 }

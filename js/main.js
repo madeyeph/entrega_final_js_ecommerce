@@ -5,69 +5,156 @@ const consolas=[
         id: "producto_1",
         title: "Super Nintendo",
         price: 150000,
-        tipo: "consola",
+        category: {
+            nombre:"consola_1",
+            id:"consolitas",
+        },
         img: "./images/consola_1.jpg",
     },
     {
         id: "producto_2",
         title: "Game Boy SP",
         price: 200000,
-        tipo:"consola",
+        category: {
+            nombre:"consola_2",
+            id:"consolitas",
+        },
         img: "./images/consola_2.jpg",
     },
     {
         id: "producto_3",
         title: "Control Nintendo Switch",
-        price: 65000,
-        tipo:"control",
-        img: "./images/consola_3.jpg",
+        price: 360000,
+        category: {
+            nombre:"control_1",
+            id:"controles",
+        },
+        img: "./images/control_1.jpg",
     },
     {
         id: "producto_4",
         title: "Nintendo Switch",
         price: 900000,
-        tipo:"consola",
-        img: "./images/consola_4.jpg",
+        category: {
+            nombre:"consola_3",
+            id:"consolitas",
+        },
+        img: "./images/consola_3.jpg",
+    },
+    {
+        id: "producto_5",
+        title: "Controles Nintendo Switch",
+        price: 320000,
+        category: {
+            nombre:"control_2",
+            id:"controles",
+        },
+        img: "./images/control_2.jpg",
+    },
+    {
+        id: "producto_6",
+        title: "Porta Control Nintendo Switch",
+        price: 135000,
+        category: {
+            nombre:"accesorio_1",
+            id:"accesorios",
+        },
+        img: "./images/accesorio_1.jpg",
+    },
+    {
+        id: "producto_7",
+        title: "Rumble Pack N64",
+        price: 750000,
+        category: {
+            nombre:"accesorio_2",
+            id:"accesorios",
+        },
+        img: "./images/accesorio_2.jpg",
+    },
+    {
+        id: "producto_8",
+        title: "Control Edición Especial",
+        price: 400000,
+        category: {
+            nombre:"control_3",
+            id:"controles",
+        },
+        img: "./images/control_3.jpg",
+    },
+    {
+        id: "producto_8",
+        title: "Case - Edición Kirby",
+        price: 220000,
+        category: {
+            nombre:"accesorio_3",
+            id:"accesorios",
+        },
+        img: "./images/accesorio_3.jpg",
     }
 ];
 
-const cajaConsolas = document.querySelector("#consolas");
+const cajaConsolas = document.querySelector("#contenedor_consolas");
+const botonCategory = document.querySelectorAll(".boton_category");
 const carritoSinProductos = document.querySelector("#carro_0");
 const carritoConProductos = document.querySelector("#productos_en_carro");
 const carritoPrecioTotal = document.querySelector("#precio_total");
 const borrarTodo = document.querySelector("#eliminar_todo");
 
-consolas.forEach((consola) => {
-    let div = document.createElement("div");
-    div.classList.add("clase_caja_consola");
-    div.innerHTML =`
-        <img class="img_consola" src="${consola.img}" alt="imagen de producto">
-        <h3>${consola.title}</h3>
-        <h4>${"$" + " " + consola.price}</h4>
-    `;
-    let button = document.createElement("button");
-    button.classList.add("consola_boton");
-    button.innerText = "Sumar al Carrito";
-    button.addEventListener("click",() => {
-        sumarAlCarrito(consola);
-        
-        Toastify({
-            text: "Producto Agregado",
-            duration: 3000,
-            newWindow: true,
-            close: true,
-            gravity: "top",
-            position: "right",
-            stopOnFocus: true,
-            style: {
-              background: "linear-gradient(to right, #0a2d15, #7fffd4)",
-            },
-            onClick: function(){}
-          }).showToast();
+function logearConsolas (consolasLogeadas){
+
+    cajaConsolas.innerHTML = "";
+
+    consolasLogeadas.forEach((consola) => {
+        let div = document.createElement("div");
+        div.classList.add("clase_caja_consola");
+        div.innerHTML =`
+            <img class="img_consola" src="${consola.img}" alt="imagen de producto">
+            <h3>${consola.title}</h3>
+            <h4>${"$" + " " + consola.price}</h4>
+        `;
+        let button = document.createElement("button");
+        button.classList.add("consola_boton");
+        button.innerText = "Sumar al Carrito";
+        button.id=`${consola.category.id}`;
+        button.addEventListener("click",() => {
+            sumarAlCarrito(consola);
+            
+            Toastify({
+                text: "Producto Agregado",
+                className: "boton_tosti",
+                duration: 3000,
+                newWindow: true,
+                close: true,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                background: "linear-gradient(to right, #0a2d15, #7fffd4)",
+                },
+                onClick: function(){}
+            }).showToast();
+        })
+        div.append(button);
+        cajaConsolas.append(div);
+    });
+}
+
+logearConsolas(consolas);
+
+botonCategory.forEach(boton => {
+    boton.addEventListener("click",(e) => {
+
+        botonCategory.forEach(boton => boton.classList.remove("activo"));
+        e.currentTarget.classList.add("activo");
+
+        if(e.currentTarget.id != "todos") {
+            const productoFiltrados = consolas.filter(consola => consola.category.id === e.currentTarget.id);
+            logearConsolas(productoFiltrados);
+        }else{
+            logearConsolas(consolas); 
+        }
     })
-    div.append(button);
-    cajaConsolas.append(div);
-});
+})
 
 const sumarAlCarrito = (consola) => {
     let productoRepetido = carro_sin_producto.find((item) => item.id === consola.id);
@@ -132,8 +219,10 @@ function precioTotal() {
 }
 
 borrarTodo.addEventListener("click", () => {
+    const totalProductos = carro_sin_producto.reduce((acc, consola) => acc + consola.cantidad,0);
     Swal.fire({
         title:"¿Quieres eliminar todos los productos",
+        text: "Vas a borrar " + totalProductos + " productos.",
         icon:"question",
         showDenyButton: true,
         denybuttonText:"No",
@@ -142,6 +231,12 @@ borrarTodo.addEventListener("click", () => {
         if (result.isConfirmed){
             carro_sin_producto.splice(0, carro_sin_producto.length);
             revisionCarrito(); 
+            Swal.fire({
+                icon:"success",
+                title:"¡Haz vaciado el carrito!",
+                showConfirmButton: false,
+                timer: 2000,
+            });
         }
     })
-}) 
+})

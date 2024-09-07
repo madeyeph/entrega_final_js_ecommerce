@@ -197,3 +197,28 @@ footer{
     background-color: rgb(10, 45, 21);
     color: white;
 }
+
+#whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px; 
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #25D366;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  #whatsapp-button img {
+    width: 35px;
+    height: 35px;
+  }
+  
+  #whatsapp-button:hover {
+    background-color: #128C7E;
+  }  

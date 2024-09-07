@@ -240,3 +240,10 @@ borrarTodo.addEventListener("click", () => {
         }
     })
 })
+
+document.getElementById('whatsapp-button').addEventListener('click', function() {
+    var telefono = "573153047850";
+    var mensaje = "Hola, me gustaría obtener más información.";
+    var url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+});

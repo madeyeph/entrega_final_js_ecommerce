@@ -108,13 +108,18 @@ nav ul button:hover{
 .productos_en_compra{
     display: flex;
     flex-direction: column;
+    margin-top: 25px;
 
 }
 .carrito_consola{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    border-radius: 6px;
     margin: 20px;
+    padding: 5px;
     align-items: center;
+    background-color: aquamarine;
 }
 .carrito_consola h3{
     font-family: Arial, Helvetica, sans-serif;
@@ -130,14 +135,25 @@ nav ul button:hover{
 .consola_quitar_boton{
     font-family: Arial, Helvetica, sans-serif;
     color: white;
-    border-radius: none;
-    background-color: none;
+    border-radius: 3px;
+    border: none;
+    background-color: aquamarine;
     cursor: pointer;
+    padding: 5px;
+    justify-content: center;
+}
+.consola_quitar_boton:hover{
+    transform: scale(1.15);
 }
 .d_none{
     display: none;
 }
+.carro_vacio{
+    margin:20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
 .total_carro h3{
+    margin-top: 20px;
     margin-left: 30px;
     font-family: Arial, Helvetica, sans-serif;
     font-style: oblique;
@@ -155,4 +171,22 @@ footer{
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(10, 45, 21);
     margin: 40px;
+}
+.boton_vaciar{
+    position: absolute;
+    right: 50px;
+    border: none;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(68, 134, 112);
+    margin: 10px;
+    padding: 7px;
+    cursor: pointer;
+}
+.boton_vaciar:hover{
+    transform: scale(1.15);
 }

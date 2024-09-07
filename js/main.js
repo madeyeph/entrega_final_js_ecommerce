@@ -35,6 +35,7 @@ const cajaConsolas = document.querySelector("#consolas");
 const carritoSinProductos = document.querySelector("#carro_0");
 const carritoConProductos = document.querySelector("#productos_en_carro");
 const carritoPrecioTotal = document.querySelector("#precio_total");
+const borrarTodo = document.querySelector("#eliminar_todo");
 
 consolas.forEach((consola) => {
     let div = document.createElement("div");
@@ -79,12 +80,14 @@ const sumarAlCarrito = (consola) => {
 }
 
 function revisionCarrito(){
-    if (carro_sin_producto.lenght === 0) {
+    if (carro_sin_producto.length === 0) {
         carritoSinProductos.classList.remove("d_none");
         carritoConProductos.classList.add("d_none");
+        borrarTodo.classList.add("d_none");
     } else {
         carritoSinProductos.classList.add("d_none");
         carritoConProductos.classList.remove("d_none");
+        borrarTodo.classList.remove("d_none");
 
         carritoConProductos.innerHTML ="";
         carro_sin_producto.forEach((consola) => {
@@ -127,3 +130,18 @@ function precioTotal() {
     const precio_final = carro_sin_producto.reduce((acc, consola) => acc + consola.price * consola.cantidad, 0);
     carritoPrecioTotal.innerText = "$" + precio_final;
 }
+
+borrarTodo.addEventListener("click", () => {
+    Swal.fire({
+        title:"¿Quieres eliminar todos los productos",
+        icon:"question",
+        showDenyButton: true,
+        denybuttonText:"No",
+        confirmButtonText:"Sí",
+    }).then((result) =>{
+        if (result.isConfirmed){
+            carro_sin_producto.splice(0, carro_sin_producto.length);
+            revisionCarrito(); 
+        }
+    })
+}) 
